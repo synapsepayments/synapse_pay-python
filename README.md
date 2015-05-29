@@ -5,15 +5,14 @@
 ## Installation
 
 ```
-pip install --upgrade synapse_pay
+pip install --upgrade synapsepay
 ```
 
 ## Documentation
 
-Documentation is available at [http://synapsepay.readme.io/v1.0/docs/](http://synapsepay.readme.io/v1.0/docs/).
+Documentation is available at [http://api.synapsepay.com/v2.0](http://api.synapsepay.com/v2.0).
 
 
 ## Samples
 
 See the [samples.md](https://github.com/synapsepayments/synapse_pay-python/blob/master/samples.md) for samples using the library.
-

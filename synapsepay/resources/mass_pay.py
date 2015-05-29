@@ -18,14 +18,14 @@ class MassPay(APIResource):
     	APIResource.register_api_subclass(self, "mass_pay")
 
     _api_attributes = {
-        "account_number_string" : {},
-        "id" : {},
-        "name_on_account" : {},
-        "resource_uri" : {},
-        "trans_type" : {},
         "amount" : {},
         "date" : {},
         "fee" : {},
         "routing_number_string" : {},
         "status" : {},
+        "account_number_string" : {},
+        "id" : {},
+        "name_on_account" : {},
+        "resource_uri" : {},
+        "trans_type" : {},
     }

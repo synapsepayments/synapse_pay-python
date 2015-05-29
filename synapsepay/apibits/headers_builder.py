@@ -5,10 +5,10 @@ import json
 import platform
 
 class HeadersBuilder(object):
-    @classmethod 
+    @classmethod
     def default_headers(cls):
         user_agent = {
-            'bindings_version': '0.0.2',
+            'bindings_version': '0.0.4',
             'lang': 'python',
             'publisher': 'paid',
             'httplib': 'requests',
@@ -25,12 +25,12 @@ class HeadersBuilder(object):
 
         headers = {
             'X-Paid-Client-User-Agent': json.dumps(user_agent),
-            'User-Agent': 'SynapsePay/v1 PythonBindings/%s' % ('0.0.2',),
-            'SynapsePay-Version': 'v2',
+            'User-Agent': 'Synapsepay/v1 PythonBindings/%s' % ('0.0.4',),
+            'Synapsepay-Version': 'v2',
             "Content-Type" : "application/json",
         }
 
-        return headers 
+        return headers
 
 
 

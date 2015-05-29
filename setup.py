@@ -19,7 +19,7 @@ install_requires = []
 
 if sys.version_info < (2, 7):
     warnings.warn(
-        'Python 2.6 is not supported by SynapsePay. '
+        'Python 2.6 is not supported by Synapsepay. '
         'If you have any questions, please file an issue on Github or '
         'contact us at hello@synapsepay.com.',
         DeprecationWarning)
@@ -36,17 +36,16 @@ if sys.version_info < (3, 0):
     except ImportError:
         install_requires.append('simplejson')
 
-
 setup(
-    name='synapse_pay',
+    name='synapsepay',
     cmdclass={'build_py': build_py},
-    version='0.0.2',
+    version='0.0.4',
     description='SynapsePay allows you to integrate bank payments into your applications',
     author='SynapsePay',
     author_email='hello@synapsepay.com',
-    url='http://synapsepay.readme.io/v1.0/docs',
-    packages=['synapse_pay', 'synapse_pay.apibits', 'synapse_pay.resources', 'synapse_pay.endpoints', 'synapse_pay.test'],
-    package_data={'synapse_pay': ['data/ca-certificates.crt', '../VERSION']},
+    url='http://api.synapsepay.com/v2.0',
+    packages=['synapsepay', 'synapsepay.apibits', 'synapsepay.resources', 'synapsepay.endpoints', 'synapsepay.test'],
+    package_data={'synapsepay': ['data/ca-certificates.crt', '../VERSION']},
     install_requires=install_requires,
-    test_suite='synapse_pay.test.all',
+    test_suite='synapsepay.test',
     use_2to3=True)

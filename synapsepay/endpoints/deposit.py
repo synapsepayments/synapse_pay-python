@@ -11,7 +11,7 @@ class DepositEndpoint(APIEndpoint):
     def create(self, params={}, headers={}):
         method = APIMethod("post", "/deposit/add", params, headers, self)
         json = self.client.execute(method)
-        return Deposit(json['deposits'], method, self.client)
+        return Deposit(json['deposit'], method, self.client)
         
     def micro(self, params={}, headers={}):
         method = APIMethod("post", "/deposit/micro", params, headers, self)

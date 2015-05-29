@@ -18,11 +18,11 @@ class Card(APIResource):
     	APIResource.register_api_subclass(self, "card")
 
     _api_attributes = {
+        "account_class" : {},
         "account_number_string" : {},
         "account_type" : {},
         "id" : {},
         "name_on_account" : {},
         "resource_uri" : {},
         "routing_number_string" : {},
-        "account_class" : {},
     }
