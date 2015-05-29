@@ -23,6 +23,14 @@ class BankEndpoint(APIEndpoint):
         else:
             return APIList(Bank, json['banks'], method, self.client)
         
+    def refresh(self, id, params={}, headers={}):
+        params = ParamsBuilder.merge({
+            "id" : id,
+        }, params)
+        method = APIMethod("post", "/bank/refresh", params, headers, self)
+        json = self.client.execute(method)
+        return APIList(Bank, json['banks'], method, self.client)
+        
     def remove(self, bank_id, params={}, headers={}):
         params = ParamsBuilder.merge({
             "bank_id" : bank_id,
@@ -30,11 +38,3 @@ class BankEndpoint(APIEndpoint):
         method = APIMethod("post", "/bank/delete", params, headers, self)
         json = self.client.execute(method)
         return json
-        
-    def retrieve(self, id, params={}, headers={}):
-        params = ParamsBuilder.merge({
-            "id" : id,
-        }, params)
-        method = APIMethod("post", "/bank/refresh", params, headers, self)
-        json = self.client.execute(method)
-        return APIList(Bank, json['banks'], method, self.client)

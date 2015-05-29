@@ -18,18 +18,21 @@ class Bank(APIResource):
     	APIResource.register_api_subclass(self, "bank")
 
     _api_attributes = {
-        "name_on_account" : {},
-        "is_verified" : {},
         "bank_name" : {},
+        "email" : {},
         "is_buyer_default" : {},
         "is_seller_default" : {},
         "account_class" : {},
-        "id" : {},
-        "is_active" : {},
-        "resource_uri" : {},
+        "address" : {},
+        "balance" : {},
         "account_number_string" : {},
-        "date" : {},
+        "id" : {},
+        "resource_uri" : {},
         "nickname" : {},
+        "phone_number" : {},
         "routing_number_string" : {},
         "account_type" : {},
+        "date" : {},
+        "mfa_verifed" : {},
+        "name_on_account" : {},
     }

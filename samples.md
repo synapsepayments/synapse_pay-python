@@ -3,15 +3,16 @@
 ## Create a user
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
 
 # This creates an oauth client for the newly created user.
-client = synapse_pay.User.create({
-    "email" : "test-user@synapsepay.com",
+client = synapsepay.User.create({
+    "email" : "localtest@crowdmade.com",
     "fullname" : "Test Account",
     "ip_address" : "11.111.11.11",
-    "phonenumber" : "123456789"
+    "phonenumber" : "123456789",
+    "password": "TestTest123$"
 })
 ```
 
@@ -19,21 +20,21 @@ client = synapse_pay.User.create({
 ## Login as a user
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
 
 # Returns an oauth client for this user
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 ```
 
 
 ## Refresh access
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
 
-client = synapse_pay.Client().refresh_access("d022a1855499e36b262a2c14b05656be8afd7ff1")
+client = synapsepay.Client().refresh_access("d022a1855499e36b262a2c14b05656be8afd7ff1")
 
 # Alternatively, if you already have a client"
 client.refresh_access()
@@ -43,9 +44,9 @@ client.refresh_access()
 ## Update a user
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 user = client.user.update({
     "fullname" : "new fullname",
@@ -60,12 +61,12 @@ user.update({
 ```
 
 
-## Retrieve a user
+## Refresh a user
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 user = client.user.retrieve()
 
@@ -77,9 +78,9 @@ user.refresh()
 ## Search users
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 users = client.user.search("test")
 ```
@@ -90,9 +91,9 @@ users = client.user.search("test")
 ## Link a bank account
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 # Without an MFA
 banks = client.banks.link({
@@ -122,25 +123,25 @@ banks = mfa.answer("Bank of America", "test_answer") # this will be a list of ba
 ```
 
 
-## Retrieve a bank account
+## Refresh a bank account
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
-banks = client.banks.retrieve("2174")
+banks = client.banks.refresh("2174")
 ```
 
 ## Add a bank account
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 bank = client.banks.add({
-    "fullname" : "Jon Smith",
+    "fullname" : "Test Account",
     "account_num" : "1111111111",
     "routing_num" : "121000358",
     "nickname" : "Example bank account",
@@ -153,9 +154,9 @@ bank = client.banks.add({
 ## Remove a bank account
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 bank = client.banks.remove("2175")
 
@@ -167,9 +168,9 @@ bank.remove()
 ## List all bank accounts
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 banks = client.banks.all()
 ```
@@ -180,37 +181,37 @@ banks = client.banks.all()
 ## Create an order
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 order = client.orders.create({
   "amount" : "100",
   "facilitator_fee" : "1",
   "seller_id" : "3425",
-  "bank_id" : "2174"
+  "bank_id" : "6730"
 })
 ```
 
 ## Poll an order
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 order = client.orders.poll("903")
 # only the status is set in this order, so access it via order.status
-order.status()
+order.status
 ```
 
 
 ## Update an order
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 order = client.orders.update("903", { "status" : 0 })
 # or if you have an order object
@@ -221,9 +222,9 @@ order.update({ "status" : 0 })
 ## Void an order
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 order = client.orders.void("903")
 # or if you have an order object
@@ -234,9 +235,9 @@ order.void()
 ## View recent orders
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 orders = client.orders.recent()
 ```
@@ -247,9 +248,9 @@ orders = client.orders.recent()
 ## Create a deposit
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 deposit = client.deposits.create({
     "bank_id" : "2174",
@@ -260,9 +261,9 @@ deposit = client.deposits.create({
 ## Create micro deposits
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 deposits = client.deposits.micro({
     "bank_id" : "2174",
@@ -274,9 +275,9 @@ deposits = client.deposits.micro({
 ## List all deposits
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 deposits = client.deposits.all()
 ```
@@ -287,9 +288,9 @@ deposits = client.deposits.all()
 ## Create an outgoing wire
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 wire = client.wires.create_outgoing({
     "account_number" : "123456790",
@@ -302,9 +303,9 @@ wire = client.wires.create_outgoing({
 ## List all outgoing wires
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 wires = client.wires.all_outgoing()
 ```
@@ -313,9 +314,9 @@ wires = client.wires.all_outgoing()
 ## Create an incoming wire
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 wire = client.wires.create_incoming({
     "amount"" "10000"
@@ -326,9 +327,9 @@ wire = client.wires.create_incoming({
 ## List all incoming wires
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 wires = client.wires.all_incoming()
 ```
@@ -339,9 +340,9 @@ wires = client.wires.all_incoming()
 ## Create a withdrawal
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 withdrawal = client.withdrawals.create({
     "bank_id" : "2174",
@@ -353,9 +354,9 @@ withdrawal = client.withdrawals.create({
 ## List all withdrawals
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 withdrawals = client.withdrawals.all()
 ```
@@ -366,9 +367,9 @@ withdrawals = client.withdrawals.all()
 ## Create a card
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 card = client.cards.create({
     "legal_name" : "Some Person",
@@ -382,9 +383,9 @@ card = client.cards.create({
 ## Update a card
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 card = client.cards.update("76", {
     "legal_name" : "John Smith"
@@ -398,9 +399,9 @@ card.update({
 ## List all cards
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 cards = client.cards.all()
 ```
@@ -411,9 +412,9 @@ cards = client.cards.all()
 ## Create a mass pay
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 # Create a mass pay with bank info
 mass_pays = client.mass_pays.create({
@@ -468,12 +469,12 @@ mass_pays = client.mass_pays.create({
 ## Cancel a mass pay
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
-mass_pays = client.mass_pays.cancel("323")
 # mass_pays will be a list of mass pays, even though only one was cancelled.
+mass_pays = client.mass_pays.cancel("323")
 
 # Or if you already have a mass pay"
 mass_pay.cancel()
@@ -482,9 +483,9 @@ mass_pay.cancel()
 ## List all mass pays
 
 ```python
-synapse_pay.CLIENT_ID = "4528d2e0a2988064d8ac"
-synapse_pay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
-client = synapse_pay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
+synapsepay.CLIENT_ID = "4528d2e0a2988064d8ac"
+synapsepay.CLIENT_SECRET = "dcbf52b16040c94a35f345b7e2c285f936d673c9"
+client = synapsepay.User.login("3ac38d63db58466982fe6f871c48f1", "TestTest123$")
 
 mass_pays = client.mass_pays.all()
 ```

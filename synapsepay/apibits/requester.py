@@ -49,7 +49,7 @@ class Requester(object):
             if len(params):
                 url += '&' if urlparse(url).query else '?' + cls.query_string(params)
             params = None 
-        elif headers['Content-Type'] == 'application/json':
+        elif 'Content-Type' in headers and headers['Content-Type'] == 'application/json':
             params = json.dumps(params)
         else:
             params = cls.query_string(params)
@@ -64,9 +64,14 @@ class Requester(object):
     @classmethod 
     def query_array(cls, params, key_prefix=None):
         ret = []
-        for key, value in params.items():
+        for key in params:
+            value = params[key] if isinstance(params, dict) else key
             key_suffix = cls.escape(key)
-            full_key = '%s[%s]' % (key_prefix, key_suffix) if key_prefix else key_suffix
+
+            if key_prefix:
+                full_key = '%s[%s]' % (key_prefix, key_suffix) if isinstance(params, dict) else '%s[]' % (key_prefix)
+            else:
+                full_key = key_suffix
 
             if isinstance(value, list) or isinstance(value, dict):
                 ret += cls.query_array(value, full_key)
@@ -75,8 +80,8 @@ class Requester(object):
         return ret
 
     @classmethod 
-    def escape(cls, value):
-        return quote(value)
+    def escape(cls, value=''):
+        return quote(str(value))
 
 
 

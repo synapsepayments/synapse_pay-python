@@ -3,10 +3,13 @@ import re
 import string
 
 class PathBuilder(object):
+    class PathTemplate(string.Template):
+        delimiter = ':'
+
     @classmethod 
     def build(cls, obj, params, path_template):
     	# Take a path like:
-	    #   "$path/$id/dogs/$dog_id"
+	    #   ":path/:id/dogs/:dog_id"
 	    # and convert it to:
 	    #   "#{object.path}/#{object.id}/dogs/#{params[:id]}" => "/objects/1/dogs/2"
 	    #
@@ -17,11 +20,13 @@ class PathBuilder(object):
         path = path_template
         if hasattr(obj, 'api_attributes') and not inspect.isclass(obj):
             attributes = obj.api_attributes()
-            path = string.Template(path).substitute(**attributes)
-        path = string.Template(path).substitute(**params)
+            path = PathBuilder.PathTemplate(path).safe_substitute(**attributes)
+        if not params:
+            params = {}
+        path = PathBuilder.PathTemplate(path).safe_substitute(**params)
 
-        remaining = [m.start() for m in re.finditer(r'[^\\]\$', path)]
+        remaining = [m.start() for m in re.finditer(r':', path)]
         if len(remaining):
-            raise ValueError("The template path can not be properly created from the provided object and params.")
+            raise ValueError("The template path (%s) can not be properly created from the provided object and params." % path)
         return path 
 

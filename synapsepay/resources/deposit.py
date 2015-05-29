@@ -2,22 +2,20 @@ from ..apibits import *
 from .. import Client
 from . import *
 
-class Withdrawal(APIResource):
+class Deposit(APIResource):
 
     # Everything below here is used behind the scenes.
     def __init__(self, *args, **kwargs):
-    	super(Withdrawal, self).__init__(*args, **kwargs)
-    	APIResource.register_api_subclass(self, "withdrawal")
+    	super(Deposit, self).__init__(*args, **kwargs)
+    	APIResource.register_api_subclass(self, "deposit")
 
     _api_attributes = {
+        "status_url" : {},
+        "user_id" : {},
         "amount" : {},
         "bank" : {},
-        "fee" : {},
-        "status" : {},
-        "status_url" : {},
         "date_created" : {},
         "id" : {},
-        "instant_credit" : {},
         "resource_uri" : {},
-        "user_id" : {},
+        "status" : {},
     }

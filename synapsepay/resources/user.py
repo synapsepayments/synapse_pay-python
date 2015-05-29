@@ -45,11 +45,11 @@ class User(APIResource):
     	APIResource.register_api_subclass(self, "user")
 
     _api_attributes = {
+        "visit_message" : {},
         "avatar" : {},
         "referral_code" : {},
         "resource_uri" : {},
         "visit_count" : {},
-        "visit_message" : {},
         "has_avatar" : {},
         "is_trusted" : {},
         "phone_number" : {},
@@ -57,9 +57,9 @@ class User(APIResource):
         "accept_bank_payments" : {},
         "promo_text" : {},
         "user_id" : {},
+        "seller_details" : {},
         "accept_gratuity" : {},
         "balance" : {},
         "email" : {},
         "fullname" : {},
-        "seller_details" : {},
     }
