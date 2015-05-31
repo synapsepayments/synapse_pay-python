@@ -15,7 +15,7 @@ except ImportError:
 path, script = os.path.split(sys.argv[0])
 os.chdir(os.path.abspath(path))
 
-install_requires = []
+install_requires = ['requests >= 2.7.0']
 
 if sys.version_info < (2, 7):
     warnings.warn(
@@ -23,11 +23,7 @@ if sys.version_info < (2, 7):
         'If you have any questions, please file an issue on Github or '
         'contact us at hello@synapsepay.com.',
         DeprecationWarning)
-    install_requires.append('requests >= 0.8.8, < 0.10.1')
     install_requires.append('ssl')
-else:
-    install_requires.append('requests >= 0.8.8')
-
 
 # Get simplejson if we don't already have json
 if sys.version_info < (3, 0):
