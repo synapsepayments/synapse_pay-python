@@ -1,4 +1,4 @@
-import synapse_pay
+import synapsepay
 
 class ParamsBuilder(object):
 	@classmethod
@@ -11,8 +11,8 @@ class ParamsBuilder(object):
 	@classmethod
 	def default_params(cls):
 		return {
-            "client_id" : synapse_pay.CLIENT_ID,
-            "client_secret" : synapse_pay.CLIENT_SECRET,
+            "client_id" : synapsepay.CLIENT_ID,
+            "client_secret" : synapsepay.CLIENT_SECRET,
         }
 
 	@classmethod

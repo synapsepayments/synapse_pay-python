@@ -10,10 +10,10 @@ class BankStatus(APIResource):
     	APIResource.register_api_subclass(self, "bank_status")
 
     _api_attributes = {
-        "status" : {},
         "bank_name" : {},
         "date" : {},
         "id" : {},
         "logo" : {},
         "resource_uri" : {},
+        "status" : {},
     }

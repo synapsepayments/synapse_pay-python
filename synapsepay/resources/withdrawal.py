@@ -2,23 +2,22 @@ from ..apibits import *
 from .. import Client
 from . import *
 
-class Wire(APIResource):
+class Withdrawal(APIResource):
 
     # Everything below here is used behind the scenes.
     def __init__(self, *args, **kwargs):
-    	super(Wire, self).__init__(*args, **kwargs)
-    	APIResource.register_api_subclass(self, "wire")
+    	super(Withdrawal, self).__init__(*args, **kwargs)
+    	APIResource.register_api_subclass(self, "withdrawal")
 
     _api_attributes = {
-        "account_number_string" : {},
+        "user_id" : {},
+        "date_created" : {},
         "id" : {},
-        "reference_id" : {},
+        "instant_credit" : {},
         "resource_uri" : {},
-        "amount" : {},
-        "date" : {},
-        "fee" : {},
-        "memo" : {},
-        "routing_number_string" : {},
-        "status" : {},
         "status_url" : {},
+        "amount" : {},
+        "bank" : {},
+        "fee" : {},
+        "status" : {},
     }

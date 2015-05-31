@@ -50,9 +50,6 @@ class APIResource(object):
     def construct(cls, json={}, api_method=None):
         return cls().refresh_from(json, api_method)
 
-    def __init__(self, json=None, api_method=None, client=None):
-        self.refresh_from(json, api_method, client)
-
     def refresh_from(self, json={}, api_method=None, client=None):
         if not isinstance(json, dict):
             json = { 'id': json }
@@ -67,3 +64,8 @@ class APIResource(object):
                 setattr(self, key, self.determine_api_attribute_value(key, value))
 
         return self
+
+    def __init__(self, json=None, api_method=None, client=None):
+        self.refresh_from(json, api_method, client)
+
+    _api_attributes = {}

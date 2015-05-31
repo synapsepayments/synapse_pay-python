@@ -1,17 +1,15 @@
 from .errors import AuthenticationError, APIError, ConnectionError
-from .headers_builder import HeadersBuilder 
+from .headers_builder import HeadersBuilder
 from .params_builder import ParamsBuilder
 from .path_builder import PathBuilder
 from .requester import Requester
 
 import requests
 
-from .. import API_BASE
-
 class APIMethod(object):
     api_key = None
     api_base = None
-    method = None  
+    method = None
     path = None
     headers = {}
     params = {}
@@ -23,9 +21,17 @@ class APIMethod(object):
             raise self.compose_error(err)
 
         if response.status_code == 401:
-            raise AuthenticationError(response.text)
+            text = response.text or "Authentication failed."
+            raise AuthenticationError(text)
+        elif response.status_code == 400:
+            text = response.text or "Invalid request. Please check the URL and parameters."
+            raise APIError(text)
+        elif response.status_code == 404:
+            text = response.text or "Invalid request. Please check the URL and parameters."
+            raise APIError(text)
         elif response.status_code != 200:
-            raise APIError(response.text)
+            text = response.text or "An error occured while making the API call."
+            raise APIError(text)
 
         try:
             return response.json()
@@ -51,8 +57,9 @@ class APIMethod(object):
         return "%s%s" % (self.api_base, self.path)
 
     def __init__(self, method, path, params, headers, instance, api_key=None, api_base=None):
+        from .. import API_BASE
         self.api_base = api_base or API_BASE
-        self.method = method 
-        self.path = PathBuilder.build(instance, params, path) 
+        self.method = method
+        self.path = PathBuilder.build(instance, params, path)
         self.headers = HeadersBuilder.build(headers)
-        self.params = ParamsBuilder.build(params) 
+        self.params = ParamsBuilder.build(params)
