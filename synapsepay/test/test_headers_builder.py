@@ -17,6 +17,6 @@ class TestHeadersBuilder(unittest.TestCase):
     def test_set_user_agent(self):
         self.assertIn('User-Agent', self.built_headers)
         self.assertIn('Synapsepay', self.built_headers['User-Agent'])
-        self.assertIn('0.0.4', self.built_headers['User-Agent'])
+        self.assertIn('0.0.5', self.built_headers['User-Agent'])
 
     # TODO: test_basic_auth_headers

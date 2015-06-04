@@ -33,9 +33,9 @@ class TestPathBuilder(unittest.TestCase):
 
         actual = synapsepay.apibits.PathBuilder.build(self.object, self.params, path)
         self.assertEqual(expected, actual)
-    
+
     def test_missing_param(self):
         path = "/a/:dog/:abc/:cat/123"
         with self.assertRaises(ValueError):
             actual = synapsepay.apibits.PathBuilder.build(self.object, self.params, path)
-        
+

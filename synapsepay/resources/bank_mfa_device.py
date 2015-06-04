@@ -22,9 +22,9 @@ class BankMfaDevice(APIResource):
     	APIResource.register_api_subclass(self, "bank_mfa_device")
 
     _api_attributes = {
+        "access_token" : {},
+        "cookies" : {},
         "form_extra" : {},
         "mfa" : {},
         "type" : {},
-        "access_token" : {},
-        "cookies" : {},
     }
