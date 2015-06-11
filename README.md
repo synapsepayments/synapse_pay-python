@@ -1,4 +1,4 @@
-# SynapsePay Python Bindings
+# Synapsepay Python Bindings
 
 [![API Library via Apibits.com](http://apibits.com/assets/images/apibits-badge.png)](http://apibits.com)
 

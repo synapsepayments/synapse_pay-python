@@ -10,12 +10,12 @@ class Deposit(APIResource):
     	APIResource.register_api_subclass(self, "deposit")
 
     _api_attributes = {
-        "status_url" : {},
-        "user_id" : {},
         "amount" : {},
         "bank" : {},
         "date_created" : {},
         "id" : {},
         "resource_uri" : {},
         "status" : {},
+        "status_url" : {},
+        "user_id" : {},
     }

@@ -48,7 +48,7 @@ class TestRequesterQuery(TestRequester):
 		self.assertEqual(expected, synapsepay.apibits.Requester.query_array(data))
 
 	def test_query_array_nested(self):
-		data = {"a" : {"b" : {"c" : "cvalue"}}}		
+		data = {"a" : {"b" : {"c" : "cvalue"}}}
 		expected = ["a[b][c]=cvalue"]
 		self.assertEqual(expected, synapsepay.apibits.Requester.query_array(data))
 

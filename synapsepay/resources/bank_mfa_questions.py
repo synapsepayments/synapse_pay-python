@@ -14,7 +14,12 @@ class BankMfaQuestions(APIResource):
         }, params)
         method = APIMethod("post", "/bank/mfa", params, headers, self)
         json = self.client.execute(method)
-        return APIList(Bank, json['banks'], method, self.client)
+        if (json['is_mfa'] and json['response']['type'] == "questions"):
+            return BankMfaQuestions(json['response'], method, self.client)
+        elif (json['is_mfa'] and json['response']['type'] == "device"):
+            return BankMfaDevice(json['response'], method, self.client)
+        else:
+            return APIList(Bank, json['banks'], method, self.client)
 
     # Everything below here is used behind the scenes.
     def __init__(self, *args, **kwargs):

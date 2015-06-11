@@ -6,7 +6,7 @@ class ParamsBuilder(object):
 		params = {}
 		for other_dict in args:
 			params.update(other_dict)
-		return params 
+		return params
 
 	@classmethod
 	def default_params(cls):
@@ -18,4 +18,4 @@ class ParamsBuilder(object):
 	@classmethod
 	def build(cls, params):
 		""" Class currently does nothing, but was created to conform to spec."""
-		return cls.merge(cls.default_params(), params)        
+		return cls.merge(cls.default_params(), params)

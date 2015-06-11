@@ -21,6 +21,7 @@ class Client(APIClient):
 		self.json = json
 		self.oauth_consumer_key = self.json['oauth_consumer_key']
 		self.refresh_token = self.json['refresh_token']
+		self.expires_at = self.json['expires_at']
 		self.expires_in = self.json['expires_in']
 
 		super(Client, self).refresh_from({}, {'oauth_consumer_key': self.oauth_consumer_key})

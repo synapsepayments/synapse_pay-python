@@ -10,15 +10,15 @@ class Wire(APIResource):
     	APIResource.register_api_subclass(self, "wire")
 
     _api_attributes = {
-        "memo" : {},
-        "routing_number_string" : {},
-        "status" : {},
-        "status_url" : {},
+        "account_number_string" : {},
         "amount" : {},
         "date" : {},
         "fee" : {},
-        "resource_uri" : {},
-        "account_number_string" : {},
         "id" : {},
+        "memo" : {},
         "reference_id" : {},
+        "resource_uri" : {},
+        "routing_number_string" : {},
+        "status" : {},
+        "status_url" : {},
     }
