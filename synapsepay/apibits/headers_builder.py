@@ -8,7 +8,7 @@ class HeadersBuilder(object):
     @classmethod
     def default_headers(cls):
         user_agent = {
-            'bindings_version': '0.0.4',
+            'bindings_version': '0.0.6',
             'lang': 'python',
             'publisher': 'paid',
             'httplib': 'requests',
@@ -25,7 +25,7 @@ class HeadersBuilder(object):
 
         headers = {
             'X-Paid-Client-User-Agent': json.dumps(user_agent),
-            'User-Agent': 'Synapsepay/v1 PythonBindings/%s' % ('0.0.4',),
+            'User-Agent': 'Synapsepay/v1 PythonBindings/%s' % ('0.0.6',),
             'Synapsepay-Version': 'v2',
             "Content-Type" : "application/json",
         }
